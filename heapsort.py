@@ -8,8 +8,8 @@ from random import randint
 
 class MaxHeap:
 
-    def __init__(self, itens):
-        self.heap = itens
+    def __init__(self, items):
+        self.heap = items
         self.heapify()
 
     def push(self, data):
@@ -19,13 +19,13 @@ class MaxHeap:
     def pop(self):
         if len(self.heap) > 1:
             self.switch(0, len(self.heap) - 1)
-            max = self.heap.pop()
+            largest = self.heap.pop()
             self.sift_down(0)
         elif len(self.heap) == 1:
-            max = self.heap[0]
+            largest = self.heap[0]
         else:
-            max = False
-        return max
+            largest = False
+        return largest
 
     def switch(self, i, j):
         self.heap[i], self.heap[j] = self.heap[j], self.heap[i]
@@ -75,18 +75,16 @@ class MaxHeap:
 my_arr = [4, 23, 53, 20, 11, 8, 2, 100, 15, 44, 0, 27]
 my_random_arr = [randint(0, 100) for _ in range(20)]
 
-print('Initian array:')
-print(my_random_arr)
+print('Initial array:')
+print(my_random_arr, end='\n\n')
 
 print('Converted to heap')
 my_heap = MaxHeap(my_random_arr)
-print(my_heap.heap)
+print(my_heap.heap, end='\n\n')
 
 print('Taking the first value of the heap: {0}'.format(my_heap.pop()))
-print(my_heap.heap)
+print(my_heap.heap, end='\n\n')
 
 print('Sorting array:')
 my_heap.sort()
 print(my_heap.heap)
-
-
